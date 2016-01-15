@@ -1,0 +1,55 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+ 	background: #666;
+	color: #000;
+ 	font-family: Calibri, sans-serif;
+	font-size: 100%;
+	line-height: 1.5em;
+}
+#container {
+	max-width: 800px;
+	margin: auto;
+	margin-top: 30px;
+    background: #cbf7bc;
+    padding: 3em;
+}
+h1 {
+    text-align: center;
+    margin: 0;
+}
+#socks {
+    width: 90%;
+    margin: auto;
+}
+label {
+    display: block;
+    padding-top: 0.7em;
+}
+select {
+   background: #fff;
+   border: 1px solid #ccc;
+   font-size: 1em;
+   height: 2em;
+   padding: 0.1em;
+   /* too much padding and the options won't show in IE */
+   width: 100%;
+}
+input {
+    width: 100%;
+    font-family: monospace;
+    font-size: 1.5em;
+    padding: 5px;
+}
+input[type='submit'] {
+    width: auto;
+    margin-top: 1em;
+}
+@media screen and ( max-width: 700px ) {
+	#container { padding: 1em; }
+	#socks { width: 100%; }
+}

@@ -4,7 +4,7 @@ These instructions explain how to set up a new MySQL database to use with these 
 
 In XAMPP, open phpMyAdmin.
 
-http://localhost/phpmyadmin/
+[http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
 
 Note: If XAMPP is not running, that link is no good. XAMPP must be running.
 

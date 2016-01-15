@@ -2,7 +2,7 @@
 
 These instructions explain how to set up a new MySQL database to use with these files.
 
-In XAMPP, open phpMyAdmin.
+In [XAMPP](https://www.apachefriends.org/index.html), open phpMyAdmin.
 
 [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
 

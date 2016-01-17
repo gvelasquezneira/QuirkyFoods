@@ -1,0 +1,24 @@
+/* name this database: sockmarket */
+
+CREATE TABLE socks (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name TEXT(20),
+    style TEXT(20),
+    color TEXT(20),
+    quantity INTEGER,
+    price DECIMAL(16,2),
+    updated TEXT
+    );
+
+/* access MySQL/MariaDB from the Terminal - Mac only:
+
+cd /Applications/XAMPP/xamppfiles/bin;./mysql --user=root --password=
+
+SHOW DATABASES;
+
+USE sockmarket
+
+   -- type SQL queries --
+
+QUIT
+*/

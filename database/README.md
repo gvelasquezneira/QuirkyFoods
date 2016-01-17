@@ -25,7 +25,7 @@ Name the 7 columns:
 * color
 * quantity
 * price
-* date
+* updated
 
 id field:
 * Keep the Type INT (integer) because this is a number
@@ -47,15 +47,15 @@ color field:
 
 quantity field:
 * Type: INT
-* Length: 20
+* Length: leave blank
 
 price field:
 * Type: DECIMAL
-* Length: 19,4
+* Length: 16,2
 
-date field:
+updated field:
 * Type: TEXT
 * Length: leave blank
-* We will use PHP to construct the date, so we will not use the SQL type DATE.
+* (We will use PHP to construct the date, so we will not use the SQL type DATE.)
 
 **Save** the database.

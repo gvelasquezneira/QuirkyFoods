@@ -1,5 +1,15 @@
 # The Database
 
+Files in this folder:
+
+* **queries.html** - Test your SQL query writing.
+
+* **socks_2.sql** - Import this table to have a lot of sock records. Notes the table name is *socks_2,* not *socks.*
+
+* **SQL** - After creating the *sockmarket* database in phpMyAdmin, you can run this query to create the table *socks.*
+
+## Create a new database
+
 These instructions explain how to set up a new MySQL database to use with these files.
 
 In [XAMPP](https://www.apachefriends.org/index.html), open phpMyAdmin.

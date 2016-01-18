@@ -13,8 +13,7 @@ body {
 }
 #container {
 	max-width: 800px;
-	margin: auto;
-	margin-top: 30px;
+	margin: 30px auto;
     background: #cbf7bc;
     padding: 3em;
 }
@@ -48,6 +47,13 @@ input {
 input[type='submit'] {
     width: auto;
     margin-top: 1em;
+}
+a {
+	color: #7d4676;
+}
+a:hover {
+	color: #A85E9E;
+	text-decoration: none;
 }
 @media screen and ( max-width: 700px ) {
 	#container { padding: 1em; }

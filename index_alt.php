@@ -46,6 +46,7 @@
 <div id="response">
     <p>Thanks for submitting the form!</p>
     <p><a href="index_alt.php">Return to the form</a></p>
+    <p><a href="inventory.php">View inventory</a></p>
 </div>
 
 </div> <!-- close container -->

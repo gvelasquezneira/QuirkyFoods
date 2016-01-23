@@ -1,13 +1,17 @@
 $(document).ready(function() {
 
+$("#response").hide();
+
 $("#sockform").on("submit", function(e) {
+    e.preventDefault();
 
 	$.ajax({
-		url:  "socks.php",
+		url:  "enter.php",
 		type: "POST",
 		data: $(this).serialize(),
 		success: function(html) {
-			alert(html);
+            $("#socks").hide();
+            $("#response").show();
         },
         error: function (jqXHR, status, err) {
             alert("Error!");
@@ -15,9 +19,9 @@ $("#sockform").on("submit", function(e) {
         // --- data: $(this).serialize(), ---
         // takes the form data and puts all of it into a single string
         // that the PHP script can read - requires a unique
-        // name attribute for every form input element
+        // NAME attribute for every form element
     });
-    return true;
+
 });
 
 }); // close document ready

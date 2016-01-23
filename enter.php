@@ -1,7 +1,7 @@
 <?php include 'database.php'; ?>
 
 <?php
-    // this is the "prepared statement" version of this file
+// This is the "prepared statement" version of this file
 
 if (isset($_POST['name']) && isset($_POST['style'])) {
 
@@ -21,36 +21,32 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
     $query = "INSERT INTO socks (name, style, color, quantity, price, updated)
     VALUES (?, ?, ?, ?, ?, ?)";
 
-    $stmt = mysqli_prepare($conn, $query);
+    // prepare the statement in db
+    if ( $stmt = mysqli_prepare($conn, $query) ) {
 
-    // next, the values to replace the 6 question marks
-    // note that 6 letters in 'sssids' MUST MATCH data types in table
-    // Type specification chars:
-    // i - integer, s - string , d - double (decimal), b - blob
-    mysqli_stmt_bind_param($stmt, 'sssids',
-    $name,
-    $style,
-    $color,
-    $quantity,
-    $price,
-    $date
-    );
+        // bind the values to replace the 6 question marks
+        // note that 6 letters in 'sssids' MUST MATCH data types in table
+        // Type specification chars:
+        // i - integer, s - string , d - double (decimal), b - blob
+        mysqli_stmt_bind_param($stmt, 'sssids',
+        $name,
+        $style,
+        $color,
+        $quantity,
+        $price,
+        $date
+        );
 
-    // executes the prepared statement with the values already set, above
-    mysqli_stmt_execute($stmt);
-
-    // this will return 1 if INSERT INTO was successful
-    $result = mysqli_affected_rows($conn);
-
-    // this will be returned to the .ajax success function
-    if ($result > 0) {
-        echo "You entered: ";
-        echo $name . ", ". $style . ", ". $color . ", ". $quantity . ", ". $price;
-    }
-
+        // executes the prepared statement with the values already set, above
+        mysqli_stmt_execute($stmt);
+        // close the prepared statement
         mysqli_stmt_close($stmt);
+        // close db connection
         mysqli_close($conn);
-}
+    } // end if prepare
+} else {
+    echo "Failed to enter!";
+} // end if isset
 
 // erase any HTML tags and then escape all quotes
 function sanitizeMySQL($conn, $var) {

@@ -44,10 +44,20 @@ input {
     font-size: 1.5em;
     padding: 5px;
 }
-input[type='submit'] {
-    width: auto;
-    margin-top: 1em;
+.middle {
+	text-align: center;
 }
+.announce {
+	background: #f2f2f2;
+	padding: 20px 0;
+	text-align: center;
+	width: 90%;
+	margin: 2em auto;
+	border: 1px solid #cc90c0;
+}
+
+/* links */
+
 a {
 	color: #7d4676;
 }
@@ -55,6 +65,56 @@ a:hover {
 	color: #A85E9E;
 	text-decoration: none;
 }
+
+/* special classes */
+
+.smallform p {
+	text-align: center;
+}
+.smallform input[type='radio'] {
+	display: inline;
+	width: auto;
+}
+.smallform label {
+	display: inline;
+}
+
+/* submit button styling insanity
+   http://cssdemos.tupence.co.uk/button-styling.htm
+   */
+
+input[type='submit'] {
+	cursor: pointer;
+	width: auto;
+	padding: 5px 25px;
+	background: #8c0672;
+	border: 1px solid #33842a;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0, .75);
+	-moz-box-shadow: 0 0 4px rgba(0,0,0, .75);
+	box-shadow: 0 0 4px rgba(0,0,0, .75);
+	color: #f3f3f3;
+	font-family: Calibri, sans-serif;
+	font-size: 1.2em;
+	margin-top: 1em;
+}
+input[type='submit']:hover,
+input[type='submit']:focus {
+	background: #690454;
+	-webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
+	-moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
+	box-shadow: 0 0 1px rgba(0,0,0, .75);
+	outline: none;
+}
+.smallform input[type='submit'] {
+	display: block;
+	margin: auto;
+}
+
+/* media queries */
+
 @media screen and ( max-width: 700px ) {
 	#container { padding: 1em; }
 	#socks { width: 100%; }

@@ -1,6 +1,7 @@
 <?php include 'database.php'; ?>
 
 <?php
+// WARNING! This version does not use prepared statements!
 
 if (isset($_POST['name']) && isset($_POST['style'])) {
 
@@ -20,7 +21,7 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
 
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-    // this will be returned to the .ajax success function
+    // will be returned to the .ajax success function
     if ($result) {
         echo "You entered: ";
         echo $name . ", ". $style . ", ". $color . ", ". $quantity . ", ". $price;

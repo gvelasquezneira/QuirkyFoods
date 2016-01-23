@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <title> Sock Market </title>
+    <title> Sock Market Simple Form </title>
     <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
-    <script src="js/socks_alt.js"></script>
+    <script src="js/simple.js"></script>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 
 <div id="socks">
 
-<form id="sockform" method="post">
+<form id="sockform" method="post" action="simple_form.php" autocomplete="off">
     <label for="name">Name </label>
 	<input type="text" name="name" id="name" maxlength="20" required>
 
@@ -42,11 +42,6 @@
 	<input type="submit" id="submit" value="Submit">
 </form>
 
-</div>
-<div id="response">
-    <p>Thanks for submitting the form!</p>
-    <p><a href="index_alt.php">Return to the form</a></p>
-    <p><a href="inventory.php">View inventory</a></p>
 </div>
 
 </div> <!-- close container -->

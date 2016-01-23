@@ -1,9 +1,12 @@
 #container {
 	max-width: 1000px;
+	margin: 30px auto;
+    background: #cbf7bc;
+    padding: 3em;
 }
 
 /*
-BASED ON
+MODIFIED - BASED ON
 Pure v0.6.0
 http://purecss.io/tables/
 Copyright 2014 Yahoo! Inc. All rights reserved.
@@ -37,7 +40,7 @@ th {
 
 /* striping every other row */
 tr:nth-child(2n-1) td {
-    background-color: #f2f2f2;
+    background: #f2f2f2;
 }
 
 /* HORIZONTAL BORDERS ONLY - overrides previous */

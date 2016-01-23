@@ -1,25 +1,25 @@
 $(document).ready(function() {
 
-$("#response").hide();
-
 $("#sockform").on("submit", function(e) {
-    e.preventDefault();
 
 	$.ajax({
-		url:  "socks2.php",
+		url:  "simple.php",
 		type: "POST",
 		data: $(this).serialize(),
-		success: function(html) {
-            $("#socks").hide();
-            $("#response").show();
+		success: function(response) {
+			if (response) {
+				alert(response);
+			} else {
+				console.log("Success!");
+			}
         },
-        error: function (jqXHR, status, err) {
+        error: function(jqXHR, status, err) {
             alert("Error!");
         }
         // --- data: $(this).serialize(), ---
         // takes the form data and puts all of it into a single string
         // that the PHP script can read - requires a unique
-        // name attribute for every form input element
+        // NAME attribute for every form element
     });
 
 });

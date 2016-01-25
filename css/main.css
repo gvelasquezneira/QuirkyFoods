@@ -20,6 +20,7 @@ body {
 h1 {
     text-align: center;
     margin: 0;
+	line-height: 140%;
 }
 #socks {
     width: 90%;
@@ -116,6 +117,10 @@ input[type='submit']:focus {
 /* media queries */
 
 @media screen and ( max-width: 700px ) {
-	#container { padding: 1em; }
+	body { background: #cbf7bc; }
+	#container {
+		margin: 10px auto;
+		padding: 10px;
+	}
 	#socks { width: 100%; }
 }

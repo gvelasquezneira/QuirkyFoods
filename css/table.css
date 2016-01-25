@@ -48,3 +48,19 @@ td, th {
     border-width: 0 0 1px 0;
     border-bottom: 1px solid #cbcbcb;
 }
+
+/* media queries */
+
+@media screen and ( max-width: 700px ) {
+	#container {
+		max-width: 100%;
+		min-width: 100%;
+		margin: auto;
+		padding: 1em 0;
+	}
+	p {
+		width: 90%;
+	 	margin: auto;
+	}
+	td, th { padding: 0.2em 0.5em; }
+}

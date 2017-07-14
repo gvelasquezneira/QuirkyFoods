@@ -1,8 +1,8 @@
 #container {
-	max-width: 1000px;
-	margin: 30px auto;
-    background: #cbf7bc;
-    padding: 3em;
+  max-width: 1000px;
+  margin: 30px auto;
+  background: #cbf7bc;
+  padding: 3em;
 }
 
 /*
@@ -13,54 +13,71 @@ Copyright 2014 Yahoo! Inc. All rights reserved.
 Licensed under the BSD License.
 https://github.com/yahoo/pure/blob/master/LICENSE.md
 */
+
 table {
-    /* Remove spacing between table cells (from Normalize.css) */
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    border: 1px solid #cbcbcb;
-    background: #e7ffdf;
-    margin: 20px auto;
+  /* Remove spacing between table cells (from Normalize.css) */
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+  background: #e7ffdf;
+  margin: 20px auto;
 }
 
 td, th {
-    border-left: 1px solid #cbcbcb; /* inner column border */
-    border-width: 0 0 0 1px;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible; /* to make th work where text is really long */
-    padding: 0.5em 1em; /* cell padding */
+  border-left: 1px solid #cbcbcb;
+  /* inner column border */
+  border-width: 0 0 0 1px;
+  font-size: inherit;
+  margin: 0;
+  overflow: visible;
+  /* to make th work where text is really long */
+  padding: 0.5em 1em;
+  /* cell padding */
 }
 
 th {
-    background: #cc90c0;
-    text-align: left;
-    vertical-align: bottom;
+  background: #cc90c0;
+  text-align: left;
+  vertical-align: bottom;
 }
+
 
 /* striping every other row */
+
 tr:nth-child(2n-1) td {
-    background: #f2f2f2;
+  background: #f2f2f2;
 }
 
+
 /* HORIZONTAL BORDERS ONLY - overrides previous */
+
 td, th {
-    border-width: 0 0 1px 0;
-    border-bottom: 1px solid #cbcbcb;
+  border-width: 0 0 1px 0;
+  border-bottom: 1px solid #cbcbcb;
 }
+
 
 /* media queries */
 
-@media screen and ( max-width: 700px ) {
-	#container {
-		max-width: 100%;
-		min-width: 100%;
-		margin: auto;
-		padding: 1em 0;
-	}
-	p {
-		width: 90%;
-	 	margin: auto;
-	}
-	td, th { padding: 0.2em 0.5em; }
+@media screen and ( max-width: 1024px) {
+  body {
+    background: #cbf7bc;
+  }
+}
+
+@media screen and ( max-width: 850px) {
+  #container {
+    max-width: 100%;
+    min-width: 100%;
+    margin: auto;
+    padding: 1em 0;
+  }
+  p {
+    width: 90%;
+    margin: auto;
+  }
+  td, th {
+    padding: 0.2em 0.5em;
+  }
 }

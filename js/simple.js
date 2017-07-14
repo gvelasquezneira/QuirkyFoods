@@ -3,7 +3,7 @@ $(document).ready(function() {
 $("#sockform").on("submit", function(e) {
 
 	$.ajax({
-		url:  "simple.php",
+		url:  "enter.php",
 		type: "POST",
 		data: $(this).serialize(),
 		success: function(response) {

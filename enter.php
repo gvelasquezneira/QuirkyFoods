@@ -1,7 +1,7 @@
 <?php include 'database.php'; ?>
 
 <?php
-// This is the "prepared statement" version of this file
+// This is the "prepared statement" version of this file.
 
 if (isset($_POST['name']) && isset($_POST['style'])) {
 
@@ -43,12 +43,13 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
         mysqli_stmt_close($stmt);
         // close db connection
         mysqli_close($conn);
-    } // end if prepare
+    } // end of prepare if-statement
 } else {
     echo "Failed to enter!";
-} // end if isset
+} // end of isset if-statement
 
 // erase any HTML tags and then escape all quotes
+// this is used on each value that came from the HTML form 
 function sanitizeMySQL($conn, $var) {
     $var = strip_tags($var);
     $var = mysqli_real_escape_string($conn, $var);

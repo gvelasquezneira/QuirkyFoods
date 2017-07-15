@@ -24,7 +24,7 @@
 if ( isset($_POST['id']) ) {
 ?>
 
-<!-- write into the HTML - table headings -->
+<!-- if true, then write into the HTML - table headings -->
 <table>
   <tr>
     <th>Name</th>

@@ -18,112 +18,113 @@
 -->
 
 <div id="inner_content">
-<?php
-// erase any HTML tags and then escape all quotes
-function sanitizeMySQL($conn, $var) {
-    $var = strip_tags($var);
-    $var = mysqli_real_escape_string($conn, $var);
-    return $var;
-}
 
+<?php
 // check if _id_ was sent here via POST ...
 if ( isset($_POST['id']) ) {
 ?>
 
-    <!-- write into the HTML - table headings -->
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Style</th>
-            <th>Color</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Updated</th>
-        </tr>
-        <tr>
+<!-- write into the HTML - table headings -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Style</th>
+    <th>Color</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Updated</th>
+  </tr>
+  <tr>
 
 <?php
-    // this calls the function above to make sure id is clean
-    $id = sanitizeMySQL($conn, $_POST['id']);
+  // erase any HTML tags and then escape all quotes
+  function sanitizeMySQL($conn, $var) {
+      $var = strip_tags($var);
+      $var = mysqli_real_escape_string($conn, $var);
+      return $var;
+  }
 
-    // get the row indicated by the id
-    $query = "SELECT * FROM socks WHERE id = ?";
+  // this calls the function above to make sure id is clean
+  $id = sanitizeMySQL($conn, $_POST['id']);
 
-    // another if-statement inside the first one ensures that
-    // code runs only if the statement was prepared
-    if ($stmt = mysqli_prepare($conn, $query)) {
-        // bind the id that came from inventory_update.php
-        mysqli_stmt_bind_param($stmt, 'i', $id);
-        // execute the prepared statement
-        mysqli_stmt_execute($stmt);
-        // next line handles the row that was selected - all fields
-        // it is "_result" because it is the result of the query
-        mysqli_stmt_bind_result($stmt, $id, $name, $style, $color, $quantity, $price, $updated);
+  // get the row indicated by the id
+  $query = "SELECT * FROM socks WHERE id = ?";
 
-        // handle the data we fetched with the SELECT statement ...
-        while (mysqli_stmt_fetch($stmt)) {
+  // another if-statement inside the first one ensures that
+  // code runs only if the statement was prepared
+  if ($stmt = mysqli_prepare($conn, $query)) {
+    // bind the id that came from inventory_update.php
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+    // execute the prepared statement
+    mysqli_stmt_execute($stmt);
+    // next line handles the row that was selected - all fields
+    // it is "_result" because it is the result of the query
+    mysqli_stmt_bind_result($stmt, $id, $name, $style, $color, $quantity, $price, $updated);
 
-            // another way to write variables into the HTML!
-            // shorter than echo in this case
-            // %s for string, %d for integer,
-            // %f for decimal (floating point); %.02f limits 2 decimal places
-            printf ("<td>%s</td>", stripslashes($name));
-            printf ("<td>%s</td>", $style);
-            printf ("<td>%s</td>", $color);
-            printf ("<td>%d</td>", $quantity);
-            printf ("<td>%.02f</td>", $price);
-            printf ("<td>%s</td>", $updated);
+    // handle the data we fetched with the SELECT statement ...
+    while (mysqli_stmt_fetch($stmt)) {
 
-        } // end while-loop
+        // another way to write variables into the HTML!
+        // shorter than echo in this case
+        // %s for string, %d for integer,
+        // %f for decimal (floating point) --
+        // %.02f limits float to 2 decimal places
+        printf ("<td>%s</td>", stripslashes($name));
+        printf ("<td>%s</td>", $style);
+        printf ("<td>%s</td>", $color);
+        printf ("<td>%d</td>", $quantity);
+        printf ("<td>%.02f</td>", $price);
+        printf ("<td>%s</td>", $updated);
 
-        // writing into the HTML to close the table and add a small form
-        // note: single quotes are needed because double quotes surround
-        // the entire set of echoed lines
+    } // end while-loop
 ?>
 
-        <!-- write into the HTML - end of table, then form -->
+  <!-- write into the HTML - end of row, table, then the form -->
 
-        </tr>
-        </table>
+  </tr>
+  </table>
 
-        <form id="socksedit" class="smallform" method="post" action="socks_update.php" autocomplete="off">
-            <p>Do you want to:
-            <label>
-            <input type="radio" name="choice" id="delete" value="delete" required> Delete this record</label>
+  <!-- this form is handled by the PHP file named in the action attribute -->
+  <form id="socksedit" class="smallform" method="post" action="socks_update.php" autocomplete="off">
+    <p>Do you want to:
 
-            <label>
-            <input type="radio" name="choice" id="update" value="update" required> Update this record</label>
-            </p>
+    <label>
+    <input type="radio" name="choice" id="delete" value="delete" required> Delete this record
+    </label>
 
-            <!-- pass all values to the next script -->
-            <input type="hidden" name="id" value="<?php echo $id ?>">
-            <input type="hidden" name="name" value="<?php echo $name ?>">
-            <input type="hidden" name="style" value="<?php echo $style ?>">
-            <input type="hidden" name="color" value="<?php echo $color ?>">
-            <input type="hidden" name="quantity" value="<?php echo $quantity ?>">
-            <input type="hidden" name="price" value="<?php echo $price ?>">
+    <label>
+    <input type="radio" name="choice" id="update" value="update" required> Update this record
+    </label>
 
-            <input type="submit" id="submit" value="Submit">
-        </form>
+    </p>
 
+    <!-- pass all the database values to the next script -->
+    <input type="hidden" name="id" value="<?php echo $id ?>">
+    <input type="hidden" name="name" value="<?php echo $name ?>">
+    <input type="hidden" name="style" value="<?php echo $style ?>">
+    <input type="hidden" name="color" value="<?php echo $color ?>">
+    <input type="hidden" name="quantity" value="<?php echo $quantity ?>">
+    <input type="hidden" name="price" value="<?php echo $price ?>">
+
+    <input type="submit" id="submit" value="Submit">
+  </form>
+  <!-- close the form -->
 
 <?php
-        mysqli_stmt_close($stmt);
-    }
-    mysqli_close($conn);
+  mysqli_stmt_close($stmt);
+  } // end of if-statement:  $stmt =
+  mysqli_close($conn);
 
 } else {
     // if _id_ was NOT sent here via POST, write a message with HTML
     // break out of PHP to write HTML next ...
 ?>
 
-
     <p class='announce'>No record was selected!</p>
 
-
 <?php
-// return to PHP just to close the if-statement
-}  // end of if-else isset($_POST['id'])
+  // return to PHP just to close the if-statement
+  }  // end of if-else isset($_POST['id'])
 ?>
 </div> <!-- close inner_content -->
 

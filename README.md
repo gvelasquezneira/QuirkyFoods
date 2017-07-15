@@ -2,10 +2,10 @@
 
 This is a simple database application for beginners. It uses:
 
-* An HTML5 form
-* JavaScript with an Ajax request
-* PHP scripts to connect to the database and write a new row into the database
 * A MySQL database
+* HTML5 forms
+* JavaScript with a jQuery Ajax request
+* PHP scripts to connect to the database and write a new row into the database
 
 This application can:
 

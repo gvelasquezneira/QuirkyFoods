@@ -17,7 +17,7 @@
 <div id="socks">
 
 <!-- this form is handled by the JavaScript file linked at bottom -->
-<form id="sockform" method="post" autocomplete="off">
+<form id="sockform" method="post" action="" autocomplete="off">
 
   <label for="name">Name </label>
 	<input type="text" name="name" id="name" maxlength="20" required>
@@ -47,10 +47,8 @@
 
 </div> <!-- close #socks -->
 
-<div id="response">
-    <p class="announce">Thanks for submitting the form!</p>
-    <p class="middle"><a href="enter_new_record.php">Return to the form</a></p>
-</div>
+<!-- empty div -->
+<div id="response"></div>
 
 </div> <!-- close container -->
 

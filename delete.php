@@ -1,9 +1,18 @@
-<?php include 'database.php'; ?>
-
 <?php
-// this script deletes an exisiting record based on the id
-// it is called by an Ajax command in update.js
 
+include 'database.php';
+
+// this script deletes an exisiting record based on the id
+// it is called by a fetch command in update.js
+
+// erase any HTML tags and then escape all quotes
+function sanitizeMySQL($conn, $var) {
+    $var = strip_tags($var);
+    $var = mysqli_real_escape_string($conn, $var);
+    return $var;
+}
+
+// check whether the key 'id' was received via POST
 if ( isset($_POST['id']) ) {
 
   // this id value came from the form
@@ -31,13 +40,6 @@ if ( isset($_POST['id']) ) {
   }
 } else {
   echo "Failed to delete!";
-}
-
-// erase any HTML tags and then escape all quotes
-function sanitizeMySQL($conn, $var) {
-    $var = strip_tags($var);
-    $var = mysqli_real_escape_string($conn, $var);
-    return $var;
 }
 
 ?>

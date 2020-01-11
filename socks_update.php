@@ -12,9 +12,10 @@
 <div id="container">
 
 <h1>Sock Market: Update Existing Record</h1>
-<!-- this page opens if you selected edit or delete
-     in socks_edit.php and submitted the form
-     - this page chooses which form to show you based on that choice
+<!--
+    this page opens if you selected edit or delete
+    in socks_edit.php and submitted the form
+    - this page chooses which form to show you based on that choice
 -->
 
 <div id="inner_content">
@@ -41,7 +42,8 @@ if ( isset($_POST['choice']) ) {
 <!-- write HTML for the confirm-delete form -->
 
 <!-- this form is handled on submit by the JS file at bottom of this file -->
-    <form id="socksdelete" class="smallform" method="post"  action="inventory_update.php" autocomplete="off">
+    <form id="socksdelete" class="smallform" method="post" action="" autocomplete="off">
+
       <p>Are you sure you want to DELETE this record?</p>
 
       <p><label>
@@ -50,14 +52,16 @@ if ( isset($_POST['choice']) ) {
       <p><label>
       <input type="radio" name="destroy" id="no" value="no"> No, do not delete it</label></p>
 
-      <!-- pass _id_ value to the next script -->
+      <!-- HIDDEN INPUT - pass id value to the next script -->
       <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
 
       <input type="submit" id="submit" value="Submit">
+
     </form>
 
+<!-- end of the ($choice == "delete") code -->
+
 <?php
-  // end of the ($choice == "delete") code
 
   // OPTION 2 - update
   // check if update record was selected ...
@@ -73,7 +77,8 @@ if ( isset($_POST['choice']) ) {
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
 ?>
-  <!-- switch from PHP to HTML
+  <!--
+       switch from PHP to HTML
        show entire form with the PHP values filled in ...
        note: the select options employ abbreviated PHP if-statements
        which are nec. to insert "selected" in the option tag.
@@ -87,8 +92,9 @@ if ( isset($_POST['choice']) ) {
     <div id="socks">
 
 <!-- this form is handled on submit by the JS file at bottom of this file -->
-    <form id="sockupdate" method="post" action="inventory_update.php" autocomplete="off">
-      <!-- retain id to be passed to JS file -->
+    <form id="sockupdate" method="post" action="" autocomplete="off">
+
+      <!-- HIDDEN INPUT - retain id to be passed to JS file -->
       <input type="hidden" name="id" value="<?php echo $id ?>">
 
       <label for="name">Name </label>
@@ -135,8 +141,11 @@ if ( isset($_POST['choice']) ) {
 
 <?php
   // return to PHP just to close the if-statement
+
   } // end of if-else isset($_POST['choice'])
+
 ?>
+
 </div> <!-- close inner_content -->
 
 <!-- below will print no matter what -->
@@ -146,7 +155,8 @@ if ( isset($_POST['choice']) ) {
 <p class="middle"><a href="enter_new_record.php">Add a new sock record</a></p>
 
 </div> <!-- close container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+
 <script src="js/update.js"></script>
+
 </body>
 </html>

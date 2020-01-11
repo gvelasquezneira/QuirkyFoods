@@ -4,8 +4,8 @@ This is a simple database application for beginners. It uses:
 
 * A MySQL database
 * HTML5 forms
-* JavaScript with a jQuery Ajax request
-* PHP scripts to connect to the database and write a new row into the database
+* Vanilla JavaScript with `fetch()`
+* PHP scripts to connect to the database and write new data into the database
 
 This application can:
 
@@ -14,7 +14,7 @@ This application can:
 * Update an existing record
 * Delete an existing record
 
-As an exercise in [a Web development course](https://webappsplus.wordpress.com/), this is the students' second experience with PHP and MySQL.
+As an exercise in [a web development course](https://webappsplus.wordpress.com/), this is the students' second experience with PHP and MySQL.
 
 These are their instructions:
 
@@ -22,6 +22,6 @@ These are their instructions:
 
 * [Using the Sock Market files](http://bit.ly/mm-sockmarket-part2) — shows the relationships among all the files in this repo
 
-* [Import or Export a Database Table](http://bit.ly/export-import-db) — how to do this in phpMyAdmin 
+* [Import or Export a Database Table](http://bit.ly/export-import-db) — how to do this in phpMyAdmin
 
 [You can try the application here.](http://weimergeeks.com/sockmarket/)

@@ -1,71 +1,88 @@
-$(document).ready(function() {
+/* this file contains 2 event listeners for socks_update.php.
+    socks_update.php writes one of 2 forms into the HTML.
+    one form lets us EDIT an existing sock record.
+    the other form lets us DELETE an existing sock record.
+    depending on which form was submitted, one of the
+    2 following scripts will run.
+*/
 
-// this file contains 2 event listeners for socks_update.php
-// socks_update.php writes one of 2 forms into the HTML
-// one form lets us EDIT an existing sock record
-// the other lets us DELETE an existing sock record
-// depending on which form was submitted, one of the
-// 2 following scripts will run
+// these are the two forms in socks_update.php -
+const sockupdate = document.querySelector('#sockupdate');
+const socksdelete = document.querySelector('#socksdelete');
 
-// if delete
-$("#socksdelete").on("submit", function(e) {
-  e.preventDefault();
+// this DIV in socks_update.php contains the forms -
+const inner_content = document.querySelector('#inner_content');
 
-  // get the value of the radio button: yes or no
-  var destroy = $('input[name=destroy]:checked', '#socksdelete').val();
-  // uncheck both radio buttons
-  yes.checked = false;
-  no.checked = false;
-  // get the value of the id from hidden field
-  var id = $('#id').val();
-  // empty the id value
-  $('#id').val('');
+// delete record
+if (socksdelete) {
+    socksdelete.onsubmit = (e) => {
+        // gets the names and current values from the form
+        const formData = new FormData(socksdelete);
+        // get value of the yes radio button: true or false
+        const destroy = document.querySelector('#yes').checked;
 
-  if (destroy !== "yes") {
-    // replace form in socks_update.php with this paragraph
-    $( "#inner_content" ).html("<p class='announce'>The record was not deleted.</p>");
-  } else {
-    // create dataString variable for Ajax
-    var dataString = 'id=' + id;
+        // uncheck both radio buttons
+        document.querySelector('#yes').checked = false;
+        document.querySelector('#no').checked = false;
+        // empty the id value
+        document.querySelector('#id').value = '';
 
-  	$.ajax({
-  		url:  "delete.php",
-  		type: "POST",
-  		data: dataString,
-  		success: function(response) {
-        $( "#inner_content" ).html("<p class='announce'>The record has been deleted.</p>");
-        // response comes from the PHP script (echo)
-        console.log(response);
-      }, // end success
-      error: function(xhr, status, err) {
-        alert("Error! Message from server: " + xhr.status + " " + err);
-      } // end error
-    }); // end ajax
-  }     // end if-else
-});     // end $("#socksdelete").on("submit", function(e) {
+        // if not yes, stay on same page and write message into the HTML
+        if (destroy == false) {
+            // replace the form in socks_update.php with this -
+            inner_content.innerHTML =
+            "<p class='announce'>The record was not deleted.</p>";
+        } else {
+            // if yes, go to PHP and the database on the server
+            // FETCH
+            fetch('delete.php', {
+                method: "POST",
+                body: formData,
+                credentials: "same-origin"
+            })
+            .then( (response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.text();
+            })
+            .then( (data) => {
+                inner_content.innerHTML =
+                "<p class='announce'>" + data + "</p>";
+            })
+            .catch( (error) => {
+                console.error('Error in fetch: ', error);
+            }); // end of FETCH
+        } // end if-else
+        return false;
+    }; // end socksdelete.onsubmit
+} // end if
 
-// if update
-$("#sockupdate").on("submit", function(e) {
-  // here we do NOT .preventDefault() because we ARE submitting the form
-	$.ajax({
-		url:  "update.php",
-		type: "POST",
-		data: $(this).serialize(),
-		success: function(response) {
-      // response comes from the PHP script (echo)
-      console.log(response);
-    }, // end success
-    error: function(xhr, status, err) {
-      alert("Error! Message from server: " + xhr.status + " " + err);
-    } // end error
-  }); // end ajax
-});   // end $("#sockupdate").on("submit", function(e) {
-
-  // --- data: $(this).serialize(), ---
-  // takes the form data and puts all of it into a single string
-  // that the PHP script can read - NOTE - requires
-  // a unique NAME attribute for every form element or it
-  // WILL NOT WORK
-
-
-}); // close document ready
+// update record
+if (sockupdate) {
+    sockupdate.onsubmit = (e) => {
+        // gets the names and current values from the form
+        const formData = new FormData(sockupdate);
+        // if yes, go to PHP and the database on the server
+        // FETCH
+        fetch('update.php', {
+            method: "POST",
+            body: formData,
+            credentials: "same-origin"
+        })
+        .then( (response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        })
+        .then( (data) => {
+            inner_content.innerHTML =
+            "<p class='announce'>" + data + "</p>";
+        })
+        .catch( (error) => {
+            console.error('Error in fetch: ', error);
+        }); // end of FETCH
+        return false;
+    }; // end sockupdate.onsubmit
+} // end if

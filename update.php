@@ -54,7 +54,7 @@ if ( isset($_POST['id']) && isset($_POST['name']) ) {
     mysqli_stmt_close($stmt);
     // close db connection
     mysqli_close($conn);
-    echo "Update succeeded.";
+    echo "Update to " . $name . " succeeded.";
   }
 } else {
   echo "Failed to update!";

@@ -32,9 +32,9 @@ CREATE TABLE `socks` (
   `style` text NOT NULL,
   `color` text NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` decimal(16,2) NOT NULL,
+  `price` decimal(4,2) NOT NULL,
   `updated` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `socks`

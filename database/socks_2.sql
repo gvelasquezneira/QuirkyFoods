@@ -56,8 +56,6 @@ INSERT INTO `socks_2` (`id`, `name`, `style`, `color`, `quantity`, `price`, `upd
 (13, 'Bonnie', 'mini', 'black', 12, '2.9500', '01-13-2016'),
 (14, 'Maria', '&quot;other&quot;', '&amp;copy;orange', 24, '5.5000', '01-13-2016'),
 (15, 'D''Shawn', 'mini', 'blue''', 12, '2.9900', '01-13-2016'),
-(16, '', 'ankle', 'blue', 12, '1.9900', '01-13-2016'),
-(17, 'Y''; UPDATE table SET', 'Y''; UPDATE table SET', 'Y''; UPDATE table SET', 12, '1.9900', '01-13-2016'),
 (18, 'Greta', 'ankle', 'blue', 12, '6.2500', '01-14-2016'),
 (19, 'Hermione', 'knee-high', 'argyle/multi', 12, '6.9900', '01-14-2016'),
 (20, 'Isabel', 'mini', 'white', 30, '1.9900', '01-14-2016'),

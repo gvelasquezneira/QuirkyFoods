@@ -54,8 +54,9 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
         // close db connection
         mysqli_close($conn);
     } // end of prepare if-statement
+    echo "New record for " . $name . " entered successfully.";
 } else {
-    echo "Failed to enter!";
+    echo "Failed to enter new record!";
 } // end of isset if-statement
 
 ?>

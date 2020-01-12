@@ -16,12 +16,12 @@ This application can:
 
 As an exercise in [a web development course](https://webappsplus.wordpress.com/), this is the students' second experience with PHP and MySQL.
 
-These are their instructions:
+Supplemental docs (Google docs):
+
+* [Using the Sock Market files](http://bit.ly/mm-sockmarket-part2) — shows the *relationships* among all the files in this repo
 
 * [Sock Market: MySQL and PHP](http://bit.ly/mm-sockmarket) — explains the JavaScript and PHP code for viewing the database records and adding a new record, with PHP `mysqli_` commands to prevent SQL injection
 
-* [Using the Sock Market files](http://bit.ly/mm-sockmarket-part2) — shows the relationships among all the files in this repo
+* [Import or Export a Database Table](http://bit.ly/export-import-db) — how to do this in phpMyAdmin (MySQL)
 
-* [Import or Export a Database Table](http://bit.ly/export-import-db) — how to do this in phpMyAdmin
-
-[You can try the application here.](http://weimergeeks.com/sockmarket/)
+[You can try the live application here.](http://weimergeeks.com/sockmarket/)

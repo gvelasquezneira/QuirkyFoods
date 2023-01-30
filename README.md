@@ -42,4 +42,8 @@ In the original *enter_new_record.php*, when the server returns a response sayin
 
 If you look at the browser address bar after you submit a new record with *enter_new_record_NOJS.php* instead, you'll see that the response is on *enter_NOJS.php* and NOT on the original form page.
 
+## File permissions on the server
+
+If you're getting a 500 internal server error on a PHP file at your hosted website, it could be because of a permissions problem. Make sure all **folders** in your app have 755 and all **files** have 644.
+
 .

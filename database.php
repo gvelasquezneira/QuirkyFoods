@@ -1,17 +1,29 @@
 <?php
+    // allow error reporting
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
-$server   = "localhost";
-$database = "sockmarket";
-$username = "root";
-$password = "";
+    // put your own values after the equals signs
+    $server   = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "sockmarket";
 
-$conn = mysqli_connect($server, $username, $password, $database);
+    try {
+        // connect to database
+        $conn = mysqli_connect($server, $username, $password, $database);
 
-if (!$conn) {
-    echo "Error: Unable to connect to database. ";
-    echo "Debugging errno: " . mysqli_connect_errno();
-    echo "Debugging error: " . mysqli_connect_error();
-    exit;
-}
+        // check connection
+        if (!$conn) {
+            throw new Exception();
+        }
+    } catch (Exception $e) {
+        // if connection fails, display error message
+        echo "Error: Unable to connect to database. ";
+        echo " Reason: " . $e->getMessage();
+        echo ". mysqli_ error number: " . mysqli_connect_errno();
+        exit; // don't execute any other code on the page
+    }
 
 ?>

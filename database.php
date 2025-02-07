@@ -3,12 +3,14 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+?>
+<?php
 
     // put your own values after the equals signs
     $server   = "localhost";
-    $username = "gvelkjyo_gvelasquez";
-    $password = "P@rtyr0ck20042022";
-    $database = "gvelkjyo_quirkyfoods";
+    $username = "root";
+    $password = "";
+    $database = "";
 
     try {
         // connect to database
@@ -26,4 +28,4 @@
         exit; // don't execute any other code on the page
     }
 
-?>
+

@@ -8,7 +8,7 @@
     $server   = "localhost";
     $username = "root";
     $password = "";
-    $database = "sockmarket";
+    $database = "quirkyfoods";
 
     try {
         // connect to database

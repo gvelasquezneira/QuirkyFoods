@@ -4,16 +4,14 @@
 // this scripts updates an exisiting record based on the id
 // it is called by an Ajax command in update.js
 
-if ( isset($_POST['id']) && isset($_POST['name']) ) {
+if ( isset($_POST['id']) && isset($_POST['food_combo']) ) {
 
   // sanitizeMySQL() is a custom function, written below
   // these values came from the form
   $id = sanitizeMySQL($conn, $_POST['id']);
-  $name = sanitizeMySQL($conn, $_POST['name']);
-  $style = sanitizeMySQL($conn, $_POST['style']);
-  $color = sanitizeMySQL($conn, $_POST['color']);
-  $quantity = sanitizeMySQL($conn, $_POST['quantity']);
-  $price = sanitizeMySQL($conn, $_POST['price']);
+  $food_combo = sanitizeMySQL($conn, $_POST['food_combo']);
+  $flavor = sanitizeMySQL($conn, $_POST['flavor']);
+  $time = sanitizeMySQL($conn, $_POST['time']);
 
   // create a new PHP timestamp
   date_default_timezone_set('America/New_York');
@@ -22,11 +20,9 @@ if ( isset($_POST['id']) && isset($_POST['name']) ) {
   // the prepared statement - note: question marks represent
   // variables we will send to database separately
   // we don't check which fields the user changed - we just update all
-  $query = "UPDATE socks SET name = ?,
-    style = ?,
-    color = ?,
-    quantity = ?,
-    price = ?,
+  $query = "UPDATE food_combos SET food_combo = ?,
+    flavor = ?,
+    time = ?,
     updated = ?
   WHERE id = ?";
 
@@ -35,15 +31,13 @@ if ( isset($_POST['id']) && isset($_POST['name']) ) {
 
     // bind the values to replace the question marks
     // the order matters! so id is at end!
-    // note that 7 letters in 'sssidsi' MUST MATCH data types in table
+    // note that 5 letters in 'ssssi' MUST MATCH data types in table
     // Type specification chars:
     // i - integer, s - string , d - double (decimal), b - blob
-    mysqli_stmt_bind_param($stmt, 'sssidsi',
-    $name,
-    $style,
-    $color,
-    $quantity,
-    $price,
+    mysqli_stmt_bind_param($stmt, 'sssdi',
+    $food_combo,
+    $flavor,
+    $time,
     $date,
     $id
     );
@@ -54,7 +48,7 @@ if ( isset($_POST['id']) && isset($_POST['name']) ) {
     mysqli_stmt_close($stmt);
     // close db connection
     mysqli_close($conn);
-    echo "Update to " . $name . " succeeded.";
+    echo "Update to " . $food_combo . " succeeded.";
   }
 } else {
   echo "Failed to update!";

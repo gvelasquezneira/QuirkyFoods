@@ -21,7 +21,7 @@ if ( isset($_POST['id']) ) {
   // the prepared statement - note: a question mark represents
   // a variable we will send to database separately
   // BE VERY CAREFUL with the DELETE STATEMENT!!!
-  $query = "DELETE FROM socks WHERE id = ?";
+  $query = "DELETE FROM quirkyfoodcombos WHERE id = ?";
 
   // another if-statement inside the first one ensures that
   // code runs only if the statement was prepared

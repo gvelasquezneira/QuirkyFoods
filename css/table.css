@@ -1,60 +1,65 @@
 #container {
   max-width: 1000px;
   margin: 30px auto;
-  background: #cbf7bc;
+  background: #8FBCE3; 
   padding: 3rem;
+  border-radius: 15px; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
 }
 
-/*
-MODIFIED - BASED ON
-Pure v0.6.0
-http://purecss.io/tables/
-Copyright 2014 Yahoo! Inc. All rights reserved.
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-
 table {
-  /* Remove spacing between table cells (from Normalize.css) */
   border-collapse: collapse;
   border-spacing: 0;
   empty-cells: show;
-  border: 1px solid #cbcbcb;
-  background: #e7ffdf;
+  border: 2px solid #000000; 
+  background: #0084ff; 
   margin: 20px auto;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
 }
 
 td, th {
-  border-left: 1px solid #cbcbcb;
-  /* inner column border */
+  border-left: 1px solid #0084ff; 
   border-width: 0 0 0 1px;
   font-size: inherit;
   margin: 0;
   overflow: visible;
-  /* to make th work where text is really long */
-  padding: 0.5rem 1rem;
-  /* cell padding */
+  padding: 0.75rem 1.5rem; 
+  transition: background 0.2s ease; 
 }
 
 th {
-  background: #cc90c0;
+  background: #FF3366; 
+  color: #F8F9FA; 
   text-align: left;
   vertical-align: bottom;
+  font-weight: 600;
 }
-
-
-/* striping every other row */
 
 tr:nth-child(2n-1) td {
-  background: #f2f2f2;
+  background: #0084ff; 
 }
-
-
-/* HORIZONTAL BORDERS ONLY - overrides previous */
 
 td, th {
   border-width: 0 0 1px 0;
-  border-bottom: 1px solid #cbcbcb;
+  border-bottom: 1px solid #0084ff; 
+}
+
+/* Match media queries from main.css */
+@media screen and (max-width: 850px) {
+  #container {
+      max-width: 100%;
+      min-width: 100%;
+      margin: auto;
+      padding: 1rem 0;
+  }
+  p { /* If you have <p> tags within the container in your HTML */
+      width: 90%;
+      margin: auto;
+  }
+  td, th {
+      padding: 0.2rem 0.5rem;
+  }
 }
 
 

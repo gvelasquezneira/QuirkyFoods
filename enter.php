@@ -13,14 +13,12 @@ function sanitizeMySQL($conn, $var) {
 }
 
 // ensure that form values were received
-if (isset($_POST['name']) && isset($_POST['style'])) {
+if (isset($_POST['food_combo']) && isset($_POST['flavor']) && isset($_POST['time'])) {
 
     // sanitizeMySQL() is a custom function, written below
-    $name = sanitizeMySQL($conn, $_POST['name']);
-    $style = sanitizeMySQL($conn, $_POST['style']);
-    $color = sanitizeMySQL($conn, $_POST['color']);
-    $quantity = sanitizeMySQL($conn, $_POST['quantity']);
-    $price = sanitizeMySQL($conn, $_POST['price']);
+    $food_combo = sanitizeMySQL($conn, $_POST['food_combo']);
+    $flavor = sanitizeMySQL($conn, $_POST['flavor']);
+    $time = sanitizeMySQL($conn, $_POST['time']);
 
     // create a PHP timestamp
     date_default_timezone_set('America/New_York');
@@ -28,8 +26,8 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
 
     // the prepared statement - note: 6 question marks represent
     // 6 variables we will send to database separately
-    $query = "INSERT INTO socks (name, style, color, quantity, price, updated)
-    VALUES (?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO quirkyfoodcombos (food_combo, flavor, time, date)
+    VALUES (?, ?, ?, ?)";
 
     // prepare the statement in db
     if ( $stmt = mysqli_prepare($conn, $query) ) {
@@ -38,12 +36,10 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
         // note that 6 letters in 'sssids' MUST MATCH data types in table
         // Type specification chars:
         // i - integer, s - string , d - double (decimal), b - blob
-        mysqli_stmt_bind_param($stmt, 'sssids',
-        $name,
-        $style,
-        $color,
-        $quantity,
-        $price,
+        mysqli_stmt_bind_param($stmt, 'ssss',
+        $food_combo,
+        $flavor,
+        $time, 
         $date
         );
 
@@ -54,7 +50,7 @@ if (isset($_POST['name']) && isset($_POST['style'])) {
         // close db connection
         mysqli_close($conn);
     } // end of prepare if-statement
-    echo "New record for " . $name . " entered successfully.";
+    echo "New record for " . $food_combo . " entered successfully.";
 } else {
     echo "Failed to enter new record!";
 } // end of isset if-statement

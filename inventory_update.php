@@ -1,14 +1,14 @@
 <?php
 	include 'database.php';
-	$query = "SELECT * FROM socks ORDER BY name";
-	$socks = mysqli_query($conn, $query);
+	$query = "SELECT * FROM quirkyfoodcombos ORDER BY flavor";
+	$food_combo = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name=viewport content="width=device-width, initial-scale=1">
-	<title> Sock Market Inventory </title>
+	<title> Quirky Food Recipes </title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/table.css">
 </head>
@@ -16,13 +16,7 @@
 <body>
 <div id="container">
 
-<h1>Sock Market Inventory</h1>
-
-<p class="middle"><a href="enter_new_record.php">Add a new sock record</a></p>
-
-<p class="middle">To update or delete a row, select it below.</p>
-
-<p class="middle">Then click the Submit button at the bottom of the table.</p>
+<h1>Quirky Food Recipes</h1>
 
 <!--
      the form below is handled by the PHP file named in the action= attribute
@@ -32,13 +26,10 @@
 <table>
 	<!-- table column headings -->
 	<tr>
-	  <th>Select</th>
-	  <th>Name</th>
-	  <th>Style</th>
-	  <th>Color</th>
-	  <th>Quantity</th>
-	  <th>Price</th>
-	  <th>Updated</th>
+      <th>Food Combination</th>
+      <th>Flavors</th>
+      <th>Time of Day</th>
+	  <th>Date entered</th>
 	</tr>
 
 <!-- Begin PHP while-loop to display database query results
@@ -48,20 +39,16 @@
 	 $socks comes from that code.
 	 NOTE all form controls must have a name= attribute.
      -->
-<?php while ($row = mysqli_fetch_assoc($socks)) :  ?>
+<?php while ($row = mysqli_fetch_assoc($food_combo)) :  ?>
 
 <tr>
-  <td><input type="radio" name="id" id="<?php echo $row['id']; ?>"
-	   value="<?php echo $row['id']; ?>"></td>
-  <!-- notice how, above, the database record id becomes
-       the id and value of the radio button -->
-  <td><?php echo stripslashes($row['name']); ?></td>
-  <td><?php echo $row['style']; ?></td>
-  <td><?php echo $row['color']; ?></td>
-  <td><?php echo $row['quantity']; ?></td>
-  <td><?php echo $row['price']; ?></td>
-  <td><?php echo $row['updated']; ?></td>
-</tr><!-- end of HTML table row -->
+		<!-- notice how, above, the database record id becomes
+			the id and value of the radio button -->
+		<td><?php echo stripslashes($row['food_combo']); ?></td>
+		<td><?php echo $row['flavor']; ?></td>
+		<td><?php echo $row['time']; ?></td>
+		<td><?php echo $row['date']; ?></td>
+		</tr><!-- end of HTML table row -->
 
 <?php endwhile;  ?>
 <!-- end the PHP while-loop
@@ -69,12 +56,12 @@
 
 </table>
 
-<input type="submit" id="submit" value="Submit One Row for Editing">
+<p class="middle"><a href="enter_new_record.php">Add a new, weird food combo</a></p>
+
+<p class="middle"><a href="index.html">Return to front page.</a></p>
 
 <!-- close the form -->
 </form>
-
-<p class="middle"><a href="enter_new_record.php">Add a new sock record</a></p>
 
 </div> <!-- close container -->
 </body>

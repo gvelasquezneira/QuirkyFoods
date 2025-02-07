@@ -6,9 +6,9 @@
 
     // put your own values after the equals signs
     $server   = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "quirkyfoods";
+    $username = "gvelkjyo_gvelasquez";
+    $password = "P@rtyr0ck20042022";
+    $database = "gvelkjyo_quirkyfoods";
 
     try {
         // connect to database
